@@ -1,0 +1,55 @@
+name: "LightGroup"
+manufacturer: "PhanVanHai-3I-HUST"
+model: "SL-03"
+labels:
+  - "Group Light OnOff"
+  - "Group"
+
+deviceResources:
+  - name: "LightGroup_OnOff"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "W", defaultValue: "false" }
+      units:
+        { defaultValue: "" }
+  - name: "LightGroup_Dimming"    
+    properties:
+      value:
+        { type: "Uint8", readWrite: "W", defaultValue: "0"}
+      units:
+        { defaultValue: "" }
+deviceCommands:
+  - name: "OnOff"
+    set:
+      - { deviceResource: "LightGroup_OnOff"}
+
+  - name: "Dimming"
+    set:
+      - { deviceResource: "LightGroup_Dimming"}  
+
+coreCommands:  
+  - name: "OnOff"
+    put:
+      path: "/api/v1/device/{deviceId}/OnOff"
+      parameterNames: ["LightGroup_OnOff"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+
+  - name: "Dimming"
+    put:
+      path: "/api/v1/device/{deviceId}/Dimming"
+      parameterNames: ["LightGroup_Dimming"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []

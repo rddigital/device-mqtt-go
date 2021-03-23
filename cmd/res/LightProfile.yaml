@@ -1,0 +1,125 @@
+name: "Light"
+manufacturer: "PhanVanHai-3I-HUST"
+model: "SL-01"
+labels:
+  - "Light OnOff"
+  - "Device"
+
+deviceResources:
+  - name: "Light_OnOff"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "RW", defaultValue: "false"}
+      units:
+        { defaultValue: "" }
+  - name: "Light_Dimming"    
+    properties:
+      value:
+        { type: "Uint8", readWrite: "RW", defaultValue: "0"}
+      units:
+        { defaultValue: "" }
+  - name: "Light_AddGroup"    
+    properties:
+      value:
+        { type: "String", readWrite: "W" }
+      units:
+        { defaultValue: "" }   
+
+  - name: "Light_RemoveGroup"    
+    properties:
+      value:
+        { type: "String", readWrite: "W" }
+      units:
+        { defaultValue: "" }
+
+deviceCommands:
+  - name: "OnOff"
+    get:
+      - { deviceResource: "Light_OnOff"}
+    set:
+      - { deviceResource: "Light_OnOff"}
+  - name: "Dimming"
+    get:
+      - { deviceResource: "Light_Dimming"}
+    set:
+      - { deviceResource: "Light_Dimming"}      
+  - name: "AddGroup"
+    set:
+      - { deviceResource: "Light_AddGroup"}
+  - name: "RemoveGroup"
+    set:
+      - { deviceResource: "Light_RemoveGroup"}
+
+coreCommands:
+  - name: "OnOff"
+    get:
+      path: "/api/v1/device/{deviceId}/OnOff"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Light_OnOff"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/OnOff"
+      parameterNames: ["Light_OnOff"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+  - name: "Dimming"
+    get:
+      path: "/api/v1/device/{deviceId}/Dimming"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Light_Dimming"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/Dimming"
+      parameterNames: ["Light_Dimming"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+
+  - name: "AddGroup"
+    put:
+      path: "/api/v1/device/{deviceId}/AddGroup"
+      parameterNames: ["Light_AddGroup"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+
+  - name: "RemoveGroup"
+    put:
+      path: "/api/v1/device/{deviceId}/RemoveGroup"
+      parameterNames: ["Light_RemoveGroup"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: [] 

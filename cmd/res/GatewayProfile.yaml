@@ -1,0 +1,146 @@
+name: "Gateway"
+manufacturer: "PhanVanHai-3I-HUST"
+model: "SL-00"
+labels:
+  - "Gateway"
+
+deviceResources:
+  - name: "Channel1"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "RW", defaultValue: "false"}
+      units:
+        { defaultValue: "" }
+  - name: "Channel2"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "RW", defaultValue: "false"}
+      units:
+        { defaultValue: "" }
+  - name: "Channel3"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "RW", defaultValue: "false"}
+      units:
+        { defaultValue: "" }
+  - name: "Channel4"    
+    properties:
+      value:
+        { type: "Bool", readWrite: "RW", defaultValue: "false"}
+      units:
+        { defaultValue: "" }                
+deviceCommands:
+  - name: "Channel1"
+    get:
+      - { deviceResource: "Channel1"}
+    set:
+      - { deviceResource: "Channel1"}
+  - name: "Channel2"
+    get:
+      - { deviceResource: "Channel2"}
+    set:
+      - { deviceResource: "Channel2"}
+  - name: "Channel3"
+    get:
+      - { deviceResource: "Channel3"}
+    set:
+      - { deviceResource: "Channel3"}
+  - name: "Channel4"
+    get:
+      - { deviceResource: "Channel4"}
+    set:
+      - { deviceResource: "Channel4"}  
+
+coreCommands:        
+  - name: "Channel1"
+    get:
+      path: "/api/v1/device/{deviceId}/Channel1"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Channel1"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/Channel1"
+      parameterNames: ["Channel1"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+  - name: "Channel2"
+    get:
+      path: "/api/v1/device/{deviceId}/Channel2"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Channel2"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/Channel2"
+      parameterNames: ["Channel2"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []          
+  - name: "Channel3"
+    get:
+      path: "/api/v1/device/{deviceId}/Channel3"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Channel3"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/Channel3"
+      parameterNames: ["Channel3"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []          
+  - name: "Channel4"
+    get:
+      path: "/api/v1/device/{deviceId}/Channel4"
+      responses:
+        -
+          code: "200"
+          description: ""
+          expectedValues: ["Channel4"]
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []
+    put:
+      path: "/api/v1/device/{deviceId}/Channel4"
+      parameterNames: ["Channel4"]
+      responses:
+        -
+          code: "200"
+          description: ""
+        -
+          code: "503"
+          description: "service unavailable"
+          expectedValues: []        
